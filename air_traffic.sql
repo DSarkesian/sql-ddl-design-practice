@@ -64,3 +64,5 @@ INSERT INTO tickets(first_name, last_name, seat,
    '2018-12-19 12:45:00', '2018-12-19 16:15:00', 'British Airways',
    'Tokyo', 'Japan',
    'London', 'United Kingdom');
+
+   CREATE TABLE outer_space
