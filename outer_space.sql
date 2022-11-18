@@ -1,16 +1,12 @@
-CREATE TABLE models (
-  code VARCHAR(5) PRIMARY KEY,
-  model TEXT NOT NULL UNIQUE,
-  cost NUMERIC(10, 2) NOT NULL);
+CREATE TABLE stars (
+  star TEXT PRIMARY KEY,
+  temp_k INT NOT NULL);
 
-CREATE TABLE orders (
-  id SERIAL PRIMARY KEY,
-  placed TIMESTAMPTZ
-    NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE planets (
+  planet TEXT PRIMARY KEY,
+  star TEXT NOT NULL REFERENCES stars,
+  orbital_period_in_years FLOAT NOT NULL);
 
-CREATE TABLE orders_items (
-  id SERIAL PRIMARY KEY,
-  order_id INT NOT NULL REFERENCES orders,
-  model_code VARCHAR(5) NOT NULL REFERENCES models,
-  cost NUMERIC(10, 2) NOT NULL,
-  notes TEXT NOT NULL DEFAULT '');
+CREATE TABLE moons (
+  moon TEXT PRIMARY KEY,
+  planet TEXT NOT NULL REFERENCES planets);
